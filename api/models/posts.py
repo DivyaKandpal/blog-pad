@@ -1,10 +1,17 @@
 from tortoise.models import Model
 from tortoise import fields
-from users import Users
+
+import sys
+import os
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from models.users import Users
 
 class Posts(Model):
-    id = fields.IntField(pk=True)
+    pid = fields.IntField(pk=True)
     content = fields.TextField()    
     like = fields.IntField()
     commentsCount = fields.IntField()
-    ownername = fields.ForeignKeyField('models.Users', on_delete='CASCADE', db_constraint=True)
+    ownername = fields.ForeignKeyField('models.Users', on_delete='CASCADE')
