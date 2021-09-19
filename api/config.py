@@ -1,0 +1,1 @@
+JWT_SECRET = 'tfzxwAZO8u'
